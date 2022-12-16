@@ -21,7 +21,6 @@ socketIO.on("connection", (socket) => {
     console.log("🔥: l'utilisateur est deconnecté");
   });
 });
-
 app.get("/api", (req, res) => {
   res.json({
     message: "Hello world",
