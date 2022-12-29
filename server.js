@@ -13,6 +13,7 @@ app.use(cors());
 socketIO.on("connection", (socket) => {
   console.log(`⚡: ${socket.id} est connecté!`);
   Comment.find()
+    .sort({ createdAt: -1 })
     .populate("userId")
     .then((result) => {
       socket.emit("output-comments", result);
