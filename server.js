@@ -12,10 +12,12 @@ app.use(cors());
 
 socketIO.on("connection", (socket) => {
   console.log(`⚡: ${socket.id} est connecté!`);
-  Comment.find().then((result) => {
-    socket.emit("output-comments", result);
-    console.log(result);
-  });
+  Comment.find()
+    .populate("userId")
+    .then((result) => {
+      socket.emit("output-comments", result);
+      console.log(result);
+    });
 
   socket.on("comment", (comment) => {
     console.log(comment);
