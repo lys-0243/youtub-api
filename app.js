@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const commentRoutes = require("./routes/comment");
+const likeRoutes=require('./routes/like');
+const disLikeRoutes = require('./routes/dislike');
 
 const app = express();
 mongoose
@@ -25,8 +27,10 @@ app.use((req, res, next) => {
   );
   next();
 });
-
 app.use("/", userRoutes);
 app.use("/", commentRoutes);
+app.use("/", likeRoutes);
+app.use("/", disLikeRoutes);
+
 
 module.exports = app;
