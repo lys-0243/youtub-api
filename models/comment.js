@@ -6,9 +6,6 @@ const commentSchema = mongoose.Schema(
     videoId: { type: String, required: true },
     parentId: {type:String, default:null},
     commentText: { type: String, required: true },
-    
-    
-    
   },
   { timestamps: true }
 );
