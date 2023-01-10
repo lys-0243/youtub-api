@@ -6,14 +6,13 @@ const likeRoutes=require('./routes/like');
 const disLikeRoutes = require('./routes/dislike');
 
 const app = express();
+const uri = "mongodb+srv://lys0243:DIpro0243@player-api-db.xn0mqge.mongodb.net/?retryWrites=true&w=majority"
 mongoose
-  .connect(
-    "mongodb+srv://caleb:katrylianmespotes@cluster0.51aqkoz.mongodb.net/comment?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
   mongoose.set('strictQuery', false);
+  
 app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
